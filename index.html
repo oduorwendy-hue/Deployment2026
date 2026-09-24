@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stand Here — Visual Ride Match</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<div id="app">
+  <div id="glow" class="glow"></div>
+
+  <!-- ================= JOIN SCREEN ================= -->
+  <div id="screen-join" class="screen">
+    <div class="eyebrow">STAND HERE</div>
+    <h1>Visual Ride Match</h1>
+    <p class="lead">
+      Two people, one meeting spot. Type the same location and you'll both get
+      the same color, shape, and number — that match confirms you've found
+      each other.
+    </p>
+
+    <label for="location-input">Where are you meeting?</label>
+    <input id="location-input" type="text" placeholder="e.g. Starbucks on Locust Walk" autocomplete="off">
+    <p style="font-size: 12px; color: var(--text-dimmer); margin: -12px 0 20px 0;">
+      This is one app for both of you &mdash; open this same link on the other
+      phone and type the exact same location there too.
+    </p>
+
+    <div id="identifier-preview" class="hidden" style="margin-bottom: 20px;">
+      <div style="font-size: 11px; color: var(--text-dimmer); margin-bottom: 8px; letter-spacing: 0.08em; font-weight: 700;">YOUR MATCH ID WILL BE</div>
+      <div id="preview-badge" class="badge" style="font-size: 26px; padding: 12px 20px;"></div>
+    </div>
+
+    <button id="btn-join-live" class="btn-primary" disabled>Start (Live Mode)</button>
+    <button id="btn-join-demo" class="btn-secondary">Try Demo Mode (no second phone needed)</button>
+
+    <div id="join-error" class="error-line hidden" style="margin-top: 14px;"></div>
+  </div>
+
+  <!-- ================= MATCH SCREEN ================= -->
+  <div id="screen-match" class="screen hidden">
+    <div class="topbar">
+      <div class="eyebrow">STAND HERE</div>
+      <button id="btn-leave" class="btn-ghost">LEAVE</button>
+    </div>
+
+    <div class="center-stage">
+      <div id="headline" class="headline">LOOKING FOR THE OTHER PHONE&hellip;</div>
+
+      <div id="big-distance-block">
+        <div id="big-distance" class="big-distance">&mdash;</div>
+        <div id="sub-distance" class="sub-distance"></div>
+      </div>
+
+      <div id="badge-block" class="hidden">
+        <div id="match-badge" class="badge"></div>
+        <div class="match-note">Match this color, shape, and number with the other person's phone.</div>
+      </div>
+
+      <div id="location-note" class="sub-distance"></div>
+
+      <div id="error-block" class="error-line hidden"></div>
+    </div>
+
+    <div class="status-line" id="vibration-status">Checking haptic support&hellip;</div>
+
+    <div id="demo-panel" class="demo-panel hidden">
+      <div class="demo-title">DEMO CONTROLS — NOT SHOWN TO REAL USERS</div>
+      <div class="demo-row">
+        <button id="btn-simulate-approach" class="sh-btn">Simulate moving closer</button>
+        <button id="btn-reset-demo" class="sh-btn hidden">Reset demo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
